@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.zdxm_exam.dao.ShoppingMapper">
+    <select id="listShoppingByUserId" resultType="com.example.zdxm_exam.dto.ShoppingDto" parameterType="java.lang.Integer">
+        select name,price,discount,subtract,num from b_shopping as shopping
+         join b_goods as goods on shopping.goods_id = goods.id
+         join b_discount_info as discount on discount.goods_id = goods.id
+        where shopping.user_id=#{userId}
+    </select>
+</mapper>

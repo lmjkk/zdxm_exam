@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.zdxm_exam.dao.GoodsMapper">
+    <!--  通过商品类型查询商品-->
+    <select id="selectGoodsByGoodsType" resultType="com.example.zdxm_exam.dto.GoodsDto" parameterType="java.lang.String">
+        select name,price,discount,subtract from b_goods as goods
+            inner join b_discount_info as discounts
+                on goods.id = discounts.goods_id where goods.type=#{goodsType}
+    </select>
+<!--    通过id查商品的价格-->
+    <select id="selectGoodsById" resultType="com.example.zdxm_exam.dto.GoodsDto" parameterType="java.lang.Integer">
+        select price,discount,subtract,discounts.id  from b_goods as goods
+         inner join b_discount_info as discounts
+          on goods.id = discounts.goods_id where goods.id=#{id}
+    </select>
+
+</mapper>

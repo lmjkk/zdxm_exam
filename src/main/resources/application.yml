@@ -1,0 +1,19 @@
+server:
+  port: 8090
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.3.253:3306/zdxm_exam?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: Sqgs50z@#>@%#
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: input
+    banner: false
+  configuration:
+#    开启驼峰命名法
+    map-underscore-to-camel-case: true
+#    mybatis-plus配置控制台打印完整带参数SQL语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml

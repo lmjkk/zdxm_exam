@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.zdxm_exam.dao.OrderMapper">
+    <select id="listOrderIdByTime" resultType="com.example.zdxm_exam.pojo.Order" parameterType="java.sql.Timestamp">
+        select id from b_order_info where create_time=#{createTime}
+    </select>
+    <select id="selectOrder" resultType="com.example.zdxm_exam.dto.OrderDto" parameterType="java.lang.Integer">
+        select goods.name,goods.price,discount,subtract,num,orders.pay_price ,total_price,franking,orderdetail.pay_price as good_pay_price
+        from b_goods as goods inner join b_order_detail_info as orderdetail on goods.id = orderdetail.goods_id
+        inner join b_discount_info as discount on goods.id = discount.goods_id
+        inner join b_order_info as orders on orders.id = orderdetail.order_id
+        where orders.id=#{orderId}
+    </select>
+</mapper>
